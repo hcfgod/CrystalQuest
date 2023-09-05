@@ -1,0 +1,64 @@
+.header-section 
+{
+    flex-grow: 0.5;
+    align-items: center;
+    justify-content: center;
+    height: 10px;
+}
+
+.controls-section 
+{
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.additional-section 
+{
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.pauseMenuTitle 
+{
+    font-size: 24px;
+    color: white;
+}
+
+.additionalText 
+{
+    font-size: 18px;
+    color: white;
+}
+
+.left-panel
+{
+	margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 500px;
+    margin-top: 250px;
+    border-radius: 10px;
+}
+
+.left-panel Button 
+{
+	margin-bottom: 10px;
+    width: 90%;
+    height: 40px;
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
+}
+
+.left-panel Button:hover
+{
+	scale: 1.1
+}
+
+.left-panel Button:focus
+{
+    border-color: gray;
+}
