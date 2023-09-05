@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6db90f1c0c896d48bdb75d58952248a, type: 3}
+  m_Name: Preferences
+  m_EditorClassIdentifier: 
+  selectedTabIndex: 0
+  historyItemsMax: 20
+  history:
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-61583886-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-807041803-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-985411863-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1289479883-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1336377412-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-380947222-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-931657122-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1336377412-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-61583886-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1289479883-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-985411863-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-807041803-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-985411863-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-807041803-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-6805087218992881441-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1028055383424299-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1521025432735274-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-807041803-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1215115842518574-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-c86201fa95c889246b5ee7f98e479176-1824806003553902-0
+  favorites: []
