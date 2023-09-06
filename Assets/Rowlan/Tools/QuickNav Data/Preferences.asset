@@ -18,17 +18,5 @@ MonoBehaviour:
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-efa46326a86a12c4b84c016b6c16f207-1807404349-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-00000000000000000000000000000000-6397032101854883442-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-efa46326a86a12c4b84c016b6c16f207-1807404349-0
+    objectGuid: GlobalObjectId_V1-2-efa46326a86a12c4b84c016b6c16f207-120793255-0
   favorites: []

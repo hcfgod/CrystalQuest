@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Lightbug.CharacterControllerPro.Implementation;
+using Lightbug.CharacterControllerPro.Core;
 
 public class Player : MonoBehaviour
 {
@@ -14,13 +15,11 @@ public class Player : MonoBehaviour
 	
 	private NormalMovement _playerMovment;
 	private Camera3D _playerCamera;
-	private PlayerFootsteps _footstepSounds;
-	
+
 	private void Awake()
 	{
 		_playerMovment = GetComponentInChildren<NormalMovement>();
 		_playerCamera = GetComponentInChildren<Camera3D>();
-		_footstepSounds = GetComponent<PlayerFootsteps>();
 	}
 	
 	private void Start()
@@ -60,5 +59,10 @@ public class Player : MonoBehaviour
 		_playerData.isWalking = _playerMovment.IsWalking();
 		_playerData.isRunning = _playerMovment.IsRunning();
 		_playerData.isCrouching = _playerMovment.IsCrouched();
+		_playerData.isGrounded = _playerMovment.CharacterActor.IsGrounded;
+		
+		_playerData.hasBecomeNotGrounded = _playerMovment.CharacterActor.HasBecomeNotGrounded;
+		_playerData.wasGrounded = _playerMovment.CharacterActor.WasGrounded;
+		_playerData.hasBecomeGrounded = _playerMovment.CharacterActor.HasBecomeGrounded;
 	}
 }

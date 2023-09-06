@@ -56,7 +56,7 @@ namespace Lightbug.CharacterControllerPro.Implementation
         /// Event triggered when the character jumps.
         /// </summary>
         public event System.Action OnJumpPerformed;
-
+	    
         /// <summary>
         /// Event triggered when the character jumps from the ground.
         /// </summary>

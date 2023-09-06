@@ -16,3 +16,7 @@ MonoBehaviour:
   isWalking: 0
   isRunning: 0
   isCrouching: 0
+  isGrounded: 0
+  wasGrounded: 0
+  hasBecomeNotGrounded: 0
+  hasBecomeGrounded: 0
