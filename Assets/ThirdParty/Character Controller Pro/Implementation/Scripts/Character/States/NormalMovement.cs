@@ -818,9 +818,15 @@ namespace Lightbug.CharacterControllerPro.Implementation
 	    {
 	    	return isCrouched;
 	    }
+	    
 	    public bool IsRunning()
 	    {
 	    	return wantToRun;
+	    }
+	    
+	    public bool IsWalking()
+	    {
+	    	return !IsRunning() && !IsIdle();
 	    }
     }
 }

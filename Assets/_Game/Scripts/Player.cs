@@ -8,12 +8,16 @@ public class Player : MonoBehaviour
 	[SerializeField] private GameEvent OnGamePausedEvent;
 	[SerializeField] private GameEvent OnGameUnPausedEvent;
 	
+	[SerializeField] private PlayerData _playerData;
+	
 	[SerializeField] private GameObject CharacterObject;
 	
+	private NormalMovement _playerMovment;
 	private Camera3D _playerCamera;
 	
 	private void Awake()
 	{
+		_playerMovment = GetComponentInChildren<NormalMovement>();
 		_playerCamera = GetComponentInChildren<Camera3D>();
 	}
 	
@@ -23,6 +27,11 @@ public class Player : MonoBehaviour
 		
 		GameEventManager.Instance.Subscribe(OnGamePausedEvent, GamePaused);
 		GameEventManager.Instance.Subscribe(OnGameUnPausedEvent, GameUnPaused);
+	}
+	
+	private void Update()
+	{
+		UpdatePlayerData();
 	}
 	
 	private void OnDisable()
@@ -41,5 +50,13 @@ public class Player : MonoBehaviour
 	{
 		CharacterObject.SetActive(true);
 		_playerCamera.enabled = true;
+	}
+	
+	private void UpdatePlayerData()
+	{
+		_playerData.isIdle = _playerMovment.IsIdle();
+		_playerData.isWalking = _playerMovment.IsWalking();
+		_playerData.isRunning = _playerMovment.IsRunning();
+		_playerData.isCrouching = _playerMovment.IsCrouched();
 	}
 }
