@@ -14,11 +14,13 @@ public class Player : MonoBehaviour
 	
 	private NormalMovement _playerMovment;
 	private Camera3D _playerCamera;
+	private PlayerFootsteps _footstepSounds;
 	
 	private void Awake()
 	{
 		_playerMovment = GetComponentInChildren<NormalMovement>();
 		_playerCamera = GetComponentInChildren<Camera3D>();
+		_footstepSounds = GetComponent<PlayerFootsteps>();
 	}
 	
 	private void Start()

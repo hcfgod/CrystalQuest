@@ -22,29 +22,13 @@ MonoBehaviour:
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-efa46326a86a12c4b84c016b6c16f207-2013771802-0
-  - context: 1
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
     title: 
-    unityObject: {fileID: 11400000, guid: 89de1cbc60f39fc4f988b4b863093779, type: 2}
-    objectGuid: GlobalObjectId_V1-3-89de1cbc60f39fc4f988b4b863093779-11400000-0
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-00000000000000000000000000000000-6397032101854883442-0
   - context: 0
     title: 
     unityObject: {fileID: 0}
     objectGuid: GlobalObjectId_V1-2-efa46326a86a12c4b84c016b6c16f207-1807404349-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-efa46326a86a12c4b84c016b6c16f207-1877689149-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 11400000, guid: 89de1cbc60f39fc4f988b4b863093779, type: 2}
-    objectGuid: GlobalObjectId_V1-3-89de1cbc60f39fc4f988b4b863093779-11400000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: 39d7b76d8eea0de4ea7fae3bcfa02bc0, type: 3}
-    objectGuid: GlobalObjectId_V1-1-39d7b76d8eea0de4ea7fae3bcfa02bc0-102900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 11500000, guid: 197a9c47e927c534397f896fcb51db1f, type: 3}
-    objectGuid: GlobalObjectId_V1-1-197a9c47e927c534397f896fcb51db1f-11500000-0
   favorites: []
