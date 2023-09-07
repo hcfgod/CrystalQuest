@@ -17,10 +17,11 @@ MonoBehaviour:
   active: 1
   Settings:
     ambientClips:
-    - showEditor: 0
+    - showEditor: 1
       name: Day
       audioClip: {fileID: 8300000, guid: 3e0b793299afd7c4086f6dfcd604aaba, type: 3}
-      audioMixerGroup: {fileID: 0}
+      audioMixerGroup: {fileID: 4654144791337843426, guid: 9ea92adde551d524f93a1859795eaa0d,
+        type: 2}
       playBackType: 1
       myAudioSource: {fileID: 0}
       loop: 1
@@ -68,10 +69,11 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       maxVolume: 1
-    - showEditor: 0
+    - showEditor: 1
       name: Night
       audioClip: {fileID: 8300000, guid: eef01bfe93973f4419f0b3dd1b7a6a06, type: 3}
-      audioMixerGroup: {fileID: 0}
+      audioMixerGroup: {fileID: 6813497258233406976, guid: 9ea92adde551d524f93a1859795eaa0d,
+        type: 2}
       playBackType: 1
       myAudioSource: {fileID: 0}
       loop: 1

@@ -12,21 +12,14 @@ public class FootstepSounds : MonoBehaviour
 	[SerializeField] private LayerMask FloorLayer;
 	[SerializeField] private TextureSound[] TextureSounds;
 	[SerializeField] private bool BlendTerrainSounds;
-	
-	[SerializeField] private float sprintingDelay;
-	[SerializeField] private float walkingDelay;
-	[SerializeField] private float crouchingDelay;
-	
-	[SerializeField] private float sprintingVolume;
-	[SerializeField] private float walkingVolume;
-	[SerializeField] private float crouchingVolume;
-	[SerializeField] private float landingVolume;
 
 	[SerializeField] private PlayerData _playerData;
-	private bool _canPlayLandSound = false;
+	private bool _canPlayLandedSound = false;
 
 	private Coroutine checkGroundRoutine;
 	private Coroutine footstepRoutine;
+	
+	private bool isFootstepCoroutineRunning = false;
 	
     #endregion
 
@@ -47,28 +40,143 @@ public class FootstepSounds : MonoBehaviour
 	
 	private void OnDisable()
 	{
-		if(checkGroundRoutine != null && footstepRoutine != null)
-		{
-			checkGroundRoutine = null;
-			footstepRoutine = null;
-		}
+		CleanupCoroutines();
 	}
 	
 	private void OnDestroy()
 	{
 		_playerMovment.CharacterActor.OnLanded -= Landed;
+		
+		CleanupCoroutines();
 	}
 	
     #endregion
 
     #region Methods
-
-	private void Landed()
+	
+	#region Util Methods
+	
+	private IEnumerator CheckGround()
 	{
-		_canPlayLandSound = true;
+		while (true)
+		{
+			if (_playerData.isGrounded)
+			{
+				RaycastHit hit;
+				if (IsPlayerOnGround(out hit))
+				{
+					HandleGroundedState(hit);
+				}
+			}
+			yield return null;
+		}
+	}
+	
+	private bool IsPlayerOnGround(out RaycastHit hit)
+	{
+		return Physics.Raycast(transform.position, Vector3.down, out hit, 1f, FloorLayer);
+	}
+	
+	private void CleanupCoroutines()
+	{
+		if(checkGroundRoutine != null && footstepRoutine != null)
+		{
+			StopCoroutine(checkGroundRoutine);
+			StopCoroutine(footstepRoutine);
+			
+			checkGroundRoutine = null;
+			footstepRoutine = null;
+		}
+	}
+	
+	#endregion
+	
+	#region Handle Methods
+	
+	private void HandleGroundedState(RaycastHit hit)
+	{
+		if (hit.collider.TryGetComponent<Terrain>(out Terrain terrain))
+		{
+			HandleTerrain(terrain, hit.point);
+		}
+		else if (hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
+		{
+			HandleRenderer(renderer);
+		}
+		else
+		{
+			HandleOtherCases(hit);
+		}
+	}
+	
+	private void HandleTerrain(Terrain terrain, Vector3 hitPoint)
+	{
+		if (_canPlayLandedSound)
+		{
+			PlayLandedSoundFromTerrain(terrain, hitPoint);
+			_canPlayLandedSound = false;
+		}
+		
+		if (!isFootstepCoroutineRunning)
+		{
+			footstepRoutine = StartCoroutine(PlayFootstepSoundFromTerrain(terrain, hitPoint));
+		}
 	}
 
-	private void PlayLandedSound(Terrain Terrain, Vector3 HitPoint)
+	private void HandleRenderer(Renderer renderer)
+	{
+		if (_canPlayLandedSound)
+		{
+			PlayLandedSoundFromRenderer(renderer);
+			_canPlayLandedSound = false;
+		}
+		
+		if (!isFootstepCoroutineRunning)
+		{
+			footstepRoutine = StartCoroutine(PlayFootstepSoundFromRenderer(renderer));
+		}
+	}
+	
+	private void HandleOtherCases(RaycastHit hit)
+	{
+		// Try to get the component in children
+		if (hit.collider.GetComponentInChildren<Terrain>())
+		{
+			Terrain childTerrain = hit.collider.GetComponentInChildren<Terrain>();
+
+			if (_canPlayLandedSound)
+			{
+				PlayLandedSoundFromTerrain(childTerrain, hit.point);
+				_canPlayLandedSound = false;
+			}
+
+			if(!isFootstepCoroutineRunning)
+			{
+				footstepRoutine = StartCoroutine(PlayFootstepSoundFromTerrain(childTerrain, hit.point));
+			}
+		}
+		else if (hit.collider.GetComponentInChildren<Renderer>())
+		{
+			Renderer childRenderer = hit.collider.GetComponentInChildren<Renderer>();
+
+			if (_canPlayLandedSound)
+			{
+				PlayLandedSoundFromRenderer(childRenderer);
+				_canPlayLandedSound = false;
+			}
+
+			if(!isFootstepCoroutineRunning)
+			{
+				footstepRoutine = StartCoroutine(PlayFootstepSoundFromRenderer(childRenderer));
+			}
+		}
+	}
+	
+	#endregion
+	
+	#region PlaySound Methods
+	
+	private void PlayLandedSoundFromTerrain(Terrain Terrain, Vector3 HitPoint)
 	{
 		Vector3 terrainPosition = HitPoint - Terrain.transform.position;
 		Vector3 splatMapPosition = new Vector3(terrainPosition.x / Terrain.terrainData.size.x, 0, terrainPosition.z / Terrain.terrainData.size.z);
@@ -95,7 +203,7 @@ public class FootstepSounds : MonoBehaviour
 				if (textureSound.Albedo == Terrain.terrainData.terrainLayers[primaryIndex].diffuseTexture)
 				{
 					AudioClip clip = GetLandedAudioFromTextureSound(textureSound);
-					AudioManager.instance.PlaySFX(clip, landingVolume, true);
+					AudioManager.instance.PlaySFX(clip, textureSound.landingVolume, true);
 				}
 			}
 		}
@@ -114,7 +222,7 @@ public class FootstepSounds : MonoBehaviour
 						if (textureSound.Albedo == Terrain.terrainData.terrainLayers[i].diffuseTexture)
 						{
 							AudioClip clip = GetLandedAudioFromTextureSound(textureSound);
-							AudioManager.instance.PlaySFX(clip, landingVolume, true);
+							AudioManager.instance.PlaySFX(clip, textureSound.landingVolume, true);
 
 							clips.Add(clip);
 							clipIndex++;
@@ -125,85 +233,22 @@ public class FootstepSounds : MonoBehaviour
 		}
 	}
 
-	private void PlayLandedSound(Renderer Renderer)
+	private void PlayLandedSoundFromRenderer(Renderer Renderer)
 	{
 		foreach (TextureSound textureSound in TextureSounds)
 		{
 			if (textureSound.Albedo == Renderer.material.GetTexture("_MainTex"))
 			{
 				AudioClip clip = GetLandedAudioFromTextureSound(textureSound);
-				AudioManager.instance.PlaySFX(clip, sprintingVolume, true);
+				AudioManager.instance.PlaySFX(clip, textureSound.sprintingVolume, true);
 			}
 		}
 	}
-
-	private IEnumerator CheckGround()
-	{
-		while (true)
-		{
-			if (_playerData.isGrounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1f, FloorLayer))
-			{
-				bool componentFound = false;
-
-				if (hit.collider.TryGetComponent<Terrain>(out Terrain terrain))
-				{
-					if (_canPlayLandSound)
-					{
-						PlayLandedSound(terrain, hit.point);
-						_canPlayLandSound = false;
-					}
-
-					yield return StartCoroutine(PlayFootstepSoundFromTerrain(terrain, hit.point));
-					componentFound = true;
-				}
-				else if (hit.collider.TryGetComponent<Renderer>(out Renderer renderer))
-				{
-					if (_canPlayLandSound)
-					{
-						PlayLandedSound(renderer);
-						_canPlayLandSound = false;
-					}
-
-					yield return StartCoroutine(PlayFootstepSoundFromRenderer(renderer));
-					componentFound = true;
-				}
-
-				if (!componentFound)
-				{
-					// Try to get the component in children
-					if (hit.collider.GetComponentInChildren<Terrain>())
-					{
-						Terrain childTerrain = hit.collider.GetComponentInChildren<Terrain>();
-
-						if (_canPlayLandSound)
-						{
-							PlayLandedSound(childTerrain, hit.point);
-							_canPlayLandSound = false;
-						}
-
-						yield return footstepRoutine = StartCoroutine(PlayFootstepSoundFromTerrain(childTerrain, hit.point));
-					}
-					else if (hit.collider.GetComponentInChildren<Renderer>())
-					{
-						Renderer childRenderer = hit.collider.GetComponentInChildren<Renderer>();
-
-						if (_canPlayLandSound)
-						{
-							PlayLandedSound(childRenderer);
-							_canPlayLandSound = false;
-						}
-
-						yield return footstepRoutine = StartCoroutine(PlayFootstepSoundFromRenderer(childRenderer));
-					}
-				}
-			}
-
-			yield return null;
-		}
-	}
-
+	
 	private IEnumerator PlayFootstepSoundFromTerrain(Terrain Terrain, Vector3 HitPoint)
 	{
+		isFootstepCoroutineRunning = true;
+		
 		Vector3 terrainPosition = HitPoint - Terrain.transform.position;
 		Vector3 splatMapPosition = new Vector3(terrainPosition.x / Terrain.terrainData.size.x,0,terrainPosition.z / Terrain.terrainData.size.z);
 
@@ -232,21 +277,21 @@ public class FootstepSounds : MonoBehaviour
 
 					if (_playerData.isRunning)
 					{
-						AudioManager.instance.PlaySFX(clip, sprintingVolume, true);
+						AudioManager.instance.PlaySFX(clip, textureSound.sprintingVolume, true);
 
-						yield return new WaitForSeconds(sprintingDelay);
+						yield return new WaitForSeconds(textureSound.sprintingDelay);
 					}
 					else if (_playerData.isWalking && !_playerData.isCrouching)
 					{
-						AudioManager.instance.PlaySFX(clip, walkingVolume, true);
+						AudioManager.instance.PlaySFX(clip, textureSound.walkingVolume, true);
 
-						yield return new WaitForSeconds(walkingDelay);
+						yield return new WaitForSeconds(textureSound.walkingDelay);
 					}
 					else if (_playerData.isCrouching && _playerData.isWalking)
 					{
-						AudioManager.instance.PlaySFX(clip, crouchingVolume, true);
+						AudioManager.instance.PlaySFX(clip, textureSound.crouchingVolume, true);
 
-						yield return new WaitForSeconds(crouchingDelay);
+						yield return new WaitForSeconds(textureSound.crouchingDelay);
 					}
 
 					break;
@@ -259,6 +304,8 @@ public class FootstepSounds : MonoBehaviour
 
 			int clipIndex = 0;
 
+			TextureSound currentTextureSound = null;
+			
 			for (int i = 0; i < alphaMap.Length; i++)
 			{
 				if (alphaMap[0, 0, i] > 0)
@@ -267,19 +314,20 @@ public class FootstepSounds : MonoBehaviour
 					{
 						if (textureSound.Albedo == Terrain.terrainData.terrainLayers[i].diffuseTexture)
 						{
+							currentTextureSound = textureSound;
 							AudioClip clip = GetFootstepAudioFromTextureSound(textureSound);
                             
 							if (_playerData.isRunning)
 							{
-								AudioManager.instance.PlaySFX(clip, sprintingVolume, true);
+								AudioManager.instance.PlaySFX(clip, textureSound.sprintingVolume, true);
 							}
 							else if (_playerData.isWalking && !_playerData.isCrouching)
 							{
-								AudioManager.instance.PlaySFX(clip, walkingVolume, true);
+								AudioManager.instance.PlaySFX(clip, textureSound.walkingVolume, true);
 							}
 							else if (_playerData.isCrouching && _playerData.isWalking)
 							{
-								AudioManager.instance.PlaySFX(clip, crouchingVolume, true);
+								AudioManager.instance.PlaySFX(clip, textureSound.crouchingVolume, true);
 							}
 
 							clips.Add(clip);
@@ -290,23 +338,34 @@ public class FootstepSounds : MonoBehaviour
 				}
 			}
 
-			if (_playerData.isRunning)
+			if(currentTextureSound != null)
 			{
-				yield return new WaitForSeconds(sprintingDelay);
+				if (_playerData.isRunning)
+				{
+					yield return new WaitForSeconds(currentTextureSound.sprintingDelay);
+				}
+				else if (_playerData.isWalking && !_playerData.isCrouching)
+				{
+					yield return new WaitForSeconds(currentTextureSound.walkingDelay);
+				}
+				else if (_playerData.isCrouching && _playerData.isWalking)
+				{
+					yield return new WaitForSeconds(currentTextureSound.crouchingDelay);
+				}
 			}
-			else if (_playerData.isWalking && !_playerData.isCrouching)
+			else
 			{
-				yield return new WaitForSeconds(walkingDelay);
-			}
-			else if (_playerData.isCrouching && _playerData.isWalking)
-			{
-				yield return new WaitForSeconds(crouchingDelay);
+				yield return new WaitForSeconds(0.5f);
 			}
 		}
+		
+		isFootstepCoroutineRunning = false;
 	}
 
 	private IEnumerator PlayFootstepSoundFromRenderer(Renderer Renderer)
 	{
+		isFootstepCoroutineRunning = true;
+		
 		foreach (TextureSound textureSound in TextureSounds)
 		{
 			if (textureSound.Albedo == Renderer.material.GetTexture("_MainTex"))
@@ -315,26 +374,28 @@ public class FootstepSounds : MonoBehaviour
 
 				if (_playerData.isRunning)
 				{
-					AudioManager.instance.PlaySFX(clip, sprintingVolume, true);
+					AudioManager.instance.PlaySFX(clip, textureSound.sprintingVolume, true);
 
-					yield return new WaitForSeconds(sprintingDelay);
+					yield return new WaitForSeconds(textureSound.sprintingDelay);
 				}
 				else if (_playerData.isWalking && !_playerData.isCrouching)
 				{
-					AudioManager.instance.PlaySFX(clip, walkingVolume, true);
+					AudioManager.instance.PlaySFX(clip, textureSound.walkingVolume, true);
 
-					yield return new WaitForSeconds(walkingDelay);
+					yield return new WaitForSeconds(textureSound.walkingDelay);
 				}
 				else if (_playerData.isCrouching && _playerData.isWalking)
 				{
-					AudioManager.instance.PlaySFX(clip, crouchingVolume, true);
+					AudioManager.instance.PlaySFX(clip, textureSound.crouchingVolume, true);
 
-					yield return new WaitForSeconds(crouchingDelay);
+					yield return new WaitForSeconds(textureSound.crouchingDelay);
 				}
 
 				break;
 			}
 		}
+		
+		isFootstepCoroutineRunning = false;
 	}
 
 	private AudioClip GetFootstepAudioFromTextureSound(TextureSound TextureSound)
@@ -349,5 +410,12 @@ public class FootstepSounds : MonoBehaviour
 		return TextureSound.landingAudio[clipIndex];
 	}
 	
+	#endregion
+		
+	private void Landed()
+	{
+		_canPlayLandedSound = true;
+	}
+
     #endregion
 }

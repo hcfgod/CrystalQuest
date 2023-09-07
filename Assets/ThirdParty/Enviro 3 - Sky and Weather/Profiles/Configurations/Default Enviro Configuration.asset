@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375eef0084d44344ebf50cbba7c1eadb, type: 3}
   m_Name: Sky Module
   m_EditorClassIdentifier: 
-  showModuleInspector: 1
+  showModuleInspector: 0
   showSaveLoad: 0
   active: 1
   Settings:
@@ -896,7 +896,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    temperature: 4.6865854
+    temperature: 4.686465
     temperatureWeatherMod: 0
     temperatureCustomMod: 0
     temperatureChangingSpeed: 0.1
@@ -971,7 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18a0693e95fd064e9d0a3b96e538236, type: 3}
   m_Name: Lighting Module
   m_EditorClassIdentifier: 
-  showModuleInspector: 1
+  showModuleInspector: 0
   showSaveLoad: 0
   active: 1
   Settings:
@@ -1753,10 +1753,10 @@ MonoBehaviour:
   showDensityControls: 0
   showTextureControls: 0
   showWindControls: 0
-  cloudAnimLayer1: {x: 0.23711506, y: 0.70434076, z: -0.071507186}
+  cloudAnimLayer1: {x: 0.33807412, y: 0.6033809, z: -0.104921736}
   cloudAnimLayer2: {x: 0.34090048, y: -0.6529711, z: 0.7734718}
-  cloudAnimNonScaledLayer1: {x: -1.2158911, y: 1.4096079, z: -35.428883}
-  cloudAnimNonScaledLayer2: {x: -0.020779273, y: 0.16845357, z: -33.086205}
+  cloudAnimNonScaledLayer1: {x: -1.2146174, y: 1.4083341, z: -35.68114}
+  cloudAnimNonScaledLayer2: {x: -0.022041058, y: 0.16971636, z: -33.338463}
   weatherMap: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -1845,15 +1845,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e0fff1aca044c40b9f5dc9d0bfaaa3, type: 3}
   m_Name: Audio Module
   m_EditorClassIdentifier: 
-  showModuleInspector: 0
+  showModuleInspector: 1
   showSaveLoad: 0
   active: 1
   Settings:
     ambientClips:
-    - showEditor: 0
+    - showEditor: 1
       name: Day
       audioClip: {fileID: 8300000, guid: 3e0b793299afd7c4086f6dfcd604aaba, type: 3}
-      audioMixerGroup: {fileID: 0}
+      audioMixerGroup: {fileID: 4654144791337843426, guid: 9ea92adde551d524f93a1859795eaa0d,
+        type: 2}
       playBackType: 1
       myAudioSource: {fileID: 0}
       loop: 1
@@ -1901,10 +1902,11 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       maxVolume: 1
-    - showEditor: 0
+    - showEditor: 1
       name: Night
       audioClip: {fileID: 8300000, guid: eef01bfe93973f4419f0b3dd1b7a6a06, type: 3}
-      audioMixerGroup: {fileID: 0}
+      audioMixerGroup: {fileID: 6813497258233406976, guid: 9ea92adde551d524f93a1859795eaa0d,
+        type: 2}
       playBackType: 1
       myAudioSource: {fileID: 0}
       loop: 1
@@ -2090,7 +2092,7 @@ MonoBehaviour:
   ambientVolumeModifier: 0
   weatherVolumeModifier: 0
   thunderVolumeModifier: 0
-  showAmbientSetupControls: 0
+  showAmbientSetupControls: 1
   showWeatherSetupControls: 0
   showThunderSetupControls: 0
   showAudioControls: 0
@@ -2225,9 +2227,9 @@ MonoBehaviour:
   preset: {fileID: 11400000, guid: 0fcdd472bd6a8ec429fc1e9bc978c4fa, type: 2}
   showCirrusCloudsControls: 1
   show2DCloudsControls: 0
-  cloudFlatBaseAnim: {x: 0.9238632, y: -0.5680751}
-  cloudFlatDetailAnim: {x: -0.8009868, y: -0.45264825}
-  cirrusAnim: {x: 0.8694182, y: -0.5958238}
+  cloudFlatBaseAnim: {x: -0.87437886, y: -0.7699923}
+  cloudFlatDetailAnim: {x: 0.20862114, y: 0.537757}
+  cirrusAnim: {x: 0.97037804, y: -0.69678366}
 --- !u!114 &7156465347053547397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,6 +2417,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   fogMat: {fileID: 0}
   volumetricsMat: {fileID: 0}
   blurMat: {fileID: 0}
@@ -2431,7 +2448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0081d4f9e5d6e0a4d9fe8e7a8d7256b6, type: 3}
   m_Name: Time Module
   m_EditorClassIdentifier: 
-  showModuleInspector: 1
+  showModuleInspector: 0
   showSaveLoad: 0
   active: 1
   Settings:
