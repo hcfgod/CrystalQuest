@@ -8,12 +8,12 @@ public class FootstepSounds : MonoBehaviour
     #region VariablesAndMethods
 
 	[SerializeField] private NormalMovement _playerMovment;
+	[SerializeField] private PlayerData _playerData;
 	
 	[SerializeField] private LayerMask FloorLayer;
 	[SerializeField] private TextureSound[] TextureSounds;
 	[SerializeField] private bool BlendTerrainSounds;
 
-	[SerializeField] private PlayerData _playerData;
 	private bool _canPlayLandedSound = false;
 
 	private Coroutine checkGroundRoutine;
