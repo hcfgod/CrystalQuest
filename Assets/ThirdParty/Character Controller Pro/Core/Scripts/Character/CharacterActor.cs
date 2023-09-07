@@ -1,10 +1,11 @@
-//#define CCP_DEBUG
+﻿//#define CCP_DEBUG
 using System.Collections.Generic;
 using UnityEngine;
 using Lightbug.Utilities;
 
 namespace Lightbug.CharacterControllerPro.Core
 {
+	using System;
     /// <summary>
     /// This class represents a character actor. It contains all the character information, collision flags, collision events, and so on. It also responsible for the execution order 
     /// of everything related to the character, such as movement, rotation, teleportation, rigidbodies interactions, body size, etc. Since the character can be 2D or 3D, this abstract class must be implemented in the 
@@ -14,7 +15,9 @@ namespace Lightbug.CharacterControllerPro.Core
     [RequireComponent(typeof(CharacterBody))]
     [DefaultExecutionOrder(ExecutionOrder.CharacterActorOrder)]
     public class CharacterActor : PhysicsActor
-    {
+	{
+		public Action OnLanded;
+		
         [Header("One way platforms")]        
 
         [Tooltip("One way platforms are objects that can be contacted by the character feet (bottom sphere) while descending.")]
@@ -2398,14 +2401,17 @@ namespace Lightbug.CharacterControllerPro.Core
             SetStableState(collisionInfo);
         }
 
+		float lastLandingTime = 0f;
+		float landingCooldown = 0.2f; // 200 milliseconds
+
         void SetStableState(CollisionInfo collisionInfo)
         {
             IsGrounded = collisionInfo.hitInfo.hit;
             IsStable = false;
 
             if (!IsGrounded)    
-                return;
-
+	            return;
+                
             if (!EvaluateGroundStability(characterCollisionInfo.groundObject.transform))
                 return;
 
@@ -2426,6 +2432,17 @@ namespace Lightbug.CharacterControllerPro.Core
                     IsStable = contactSlopeAngle <= slopeLimit;
                 }
             }
+            
+	        // Check if the character has just landed
+	        if (!WasGrounded && IsGrounded)
+	        {
+		        float currentTime = Time.time;
+		        if (currentTime - lastLandingTime >= landingCooldown)
+		        {
+			        OnLanded?.Invoke();
+			        lastLandingTime = currentTime;
+		        }
+	        }
         }
 
         void ResetGroundInfo()

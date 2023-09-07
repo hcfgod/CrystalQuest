@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lightbug.CharacterControllerPro.Implementation;
 
 public class FootstepSounds : MonoBehaviour
 {
     #region VariablesAndMethods
 
+	[SerializeField] private NormalMovement _playerMovment;
+	
 	[SerializeField] private LayerMask FloorLayer;
 	[SerializeField] private TextureSound[] TextureSounds;
 	[SerializeField] private bool BlendTerrainSounds;
@@ -22,15 +25,40 @@ public class FootstepSounds : MonoBehaviour
 	[SerializeField] private PlayerData _playerData;
 	private bool _canPlayLandSound = false;
 
+	private Coroutine checkGroundRoutine;
+	private Coroutine footstepRoutine;
+	
     #endregion
 
     #region MonoBehaviour
-
+	
 	private void Start()
 	{
-		StartCoroutine(CheckGround());
+		_playerMovment.CharacterActor.OnLanded += Landed;
+		
+		if(checkGroundRoutine == null && footstepRoutine == null)
+			checkGroundRoutine = StartCoroutine(CheckGround());
 	}
 
+	private void OnEnable()
+	{	
+		checkGroundRoutine = StartCoroutine(CheckGround());		
+	}
+	
+	private void OnDisable()
+	{
+		if(checkGroundRoutine != null && footstepRoutine != null)
+		{
+			checkGroundRoutine = null;
+			footstepRoutine = null;
+		}
+	}
+	
+	private void OnDestroy()
+	{
+		_playerMovment.CharacterActor.OnLanded -= Landed;
+	}
+	
     #endregion
 
     #region Methods
@@ -153,7 +181,7 @@ public class FootstepSounds : MonoBehaviour
 							_canPlayLandSound = false;
 						}
 
-						yield return StartCoroutine(PlayFootstepSoundFromTerrain(childTerrain, hit.point));
+						yield return footstepRoutine = StartCoroutine(PlayFootstepSoundFromTerrain(childTerrain, hit.point));
 					}
 					else if (hit.collider.GetComponentInChildren<Renderer>())
 					{
@@ -165,7 +193,7 @@ public class FootstepSounds : MonoBehaviour
 							_canPlayLandSound = false;
 						}
 
-						yield return StartCoroutine(PlayFootstepSoundFromRenderer(childRenderer));
+						yield return footstepRoutine = StartCoroutine(PlayFootstepSoundFromRenderer(childRenderer));
 					}
 				}
 			}

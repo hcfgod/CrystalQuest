@@ -10,7 +10,4 @@ public class PlayerData : ScriptableObject
 	public bool isRunning;
 	public bool isCrouching;
 	public bool isGrounded;
-	public bool wasGrounded;
-	public bool hasBecomeNotGrounded;
-	public bool hasBecomeGrounded;
 }
