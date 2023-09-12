@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6910768c241d1924f921a3f44198cfe1, type: 3}
   m_Name: Default Aurora Preset
   m_EditorClassIdentifier: 
-  showModuleInspector: 0
+  showModuleInspector: 1
   showSaveLoad: 0
   active: 1
   Settings:
@@ -50,18 +50,18 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    auroraColor: {r: 0.1, g: 0.5, b: 0.7, a: 1}
-    auroraBrightness: 75
-    auroraContrast: 10
+    auroraColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+    auroraBrightness: 71.36
+    auroraContrast: 7.29
     auroraHeight: 20000
-    auroraScale: 0.01
+    auroraScale: 0.0173
     auroraSteps: 32
     auroraLayer1Settings: {x: 0.1, y: 0.1, z: 0, w: 0.5}
     auroraLayer2Settings: {x: 5, y: 5, z: 0, w: 0.5}
     auroraColorshiftSettings: {x: 0.05, y: 0.05, z: 0, w: 5}
-    auroraSpeed: 0.005
+    auroraSpeed: 0.0035
     aurora_layer_1: {fileID: 2800000, guid: 3316634c3fa8231429eb988934de236c, type: 3}
     aurora_layer_2: {fileID: 2800000, guid: 25bf6a8e18b4471499e961d75d1777c2, type: 3}
     aurora_colorshift: {fileID: 2800000, guid: f99b7b1866c1ab3489d848a4ef3dd81b, type: 3}
   preset: {fileID: 0}
-  showAuroraControls: 0
+  showAuroraControls: 1

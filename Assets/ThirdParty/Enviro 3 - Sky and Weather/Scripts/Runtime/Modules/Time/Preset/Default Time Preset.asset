@@ -19,17 +19,17 @@ MonoBehaviour:
     simulate: 0
     secSerial: 0
     minSerial: 0
-    hourSerial: 11
-    daySerial: 16
+    hourSerial: 2
+    daySerial: 1
     monthSerial: 1
     yearSerial: 2022
-    timeOfDay: 11
+    timeOfDay: 2
     latitude: 0
     longitude: 0
-    utcOffset: 1
-    cycleLengthInMinutes: 10
-    dayLengthModifier: 1
-    nightLengthModifier: 1
+    utcOffset: -1
+    cycleLengthInMinutes: 60
+    dayLengthModifier: 2.16
+    nightLengthModifier: 2.59
   preset: {fileID: 0}
   showTimeControls: 1
   showLocationControls: 0

@@ -158,7 +158,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    temperature: 4.686465
+    temperature: 1.4218131
     temperatureWeatherMod: 0
     temperatureCustomMod: 0
     temperatureChangingSpeed: 0.1

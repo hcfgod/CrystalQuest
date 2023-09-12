@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc64ab65e50ce2c4599abae516516185, type: 3}
+  m_Name: MainMenu Enviro Configuration
+  m_EditorClassIdentifier: 
+  timeModule: {fileID: 7641771290446614687, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  lightingModule: {fileID: -2917269256795556972, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  Sky: {fileID: -6309341873459469002, guid: 6cd5955e696c39a4289707c39d362701, type: 2}
+  fogModule: {fileID: 7640441264838873762, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  volumetricCloudModule: {fileID: -1908510324810229307, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  flatCloudModule: {fileID: 5146867784816170477, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  Weather: {fileID: -6458479593538681866, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  Aurora: {fileID: 11400000, guid: 278933d28004c6b40ace276968b45b9e, type: 2}
+  Audio: {fileID: 11400000, guid: fac88c4f2c49e2d429d7269d163c9947, type: 2}
+  Effects: {fileID: -4962836116316160726, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  Lightning: {fileID: 1724393643164213524, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  Quality: {fileID: 2490124024990619507, guid: 6cd5955e696c39a4289707c39d362701, type: 2}
+  Environment: {fileID: -5163761915426777928, guid: 6cd5955e696c39a4289707c39d362701,
+    type: 2}
+  Events: {fileID: 7156465347053547397, guid: 6cd5955e696c39a4289707c39d362701, type: 2}

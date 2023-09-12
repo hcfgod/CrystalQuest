@@ -896,7 +896,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    temperature: 4.686465
+    temperature: 0.82957673
     temperatureWeatherMod: 0
     temperatureCustomMod: 0
     temperatureChangingSpeed: 0.1
@@ -1552,7 +1552,7 @@ MonoBehaviour:
     updateDefaultEnvironmentReflections: 1
     defaultSkyReflectionTex: {fileID: 0}
   preset: {fileID: 11400000, guid: 81d8b109102443243bcb0894975c0718, type: 2}
-  lastReflectionUpdate: 11.025
+  lastReflectionUpdate: 2.025
   lastReflectionUpdatePos: {x: 0, y: 0, z: 0}
   showDirectLightingControls: 1
   showAmbientLightingControls: 0
@@ -1753,10 +1753,10 @@ MonoBehaviour:
   showDensityControls: 0
   showTextureControls: 0
   showWindControls: 0
-  cloudAnimLayer1: {x: 0.33807412, y: 0.6033809, z: -0.104921736}
+  cloudAnimLayer1: {x: 0.7981389, y: 0.14331236, z: -0.50151455}
   cloudAnimLayer2: {x: 0.34090048, y: -0.6529711, z: 0.7734718}
-  cloudAnimNonScaledLayer1: {x: -1.2146174, y: 1.4083341, z: -35.68114}
-  cloudAnimNonScaledLayer2: {x: -0.022041058, y: 0.16971636, z: -33.338463}
+  cloudAnimNonScaledLayer1: {x: -1.2084203, y: 1.402137, z: -36.83122}
+  cloudAnimNonScaledLayer2: {x: -0.027791876, y: 0.17546582, z: -34.48854}
   weatherMap: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -1770,20 +1770,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc64ab65e50ce2c4599abae516516185, type: 3}
   m_Name: Default Enviro Configuration
   m_EditorClassIdentifier: 
-  timeModule: {fileID: 7641771290446614687}
-  lightingModule: {fileID: -2917269256795556972}
-  Sky: {fileID: -6309341873459469002}
-  fogModule: {fileID: 7640441264838873762}
-  volumetricCloudModule: {fileID: -1908510324810229307}
-  flatCloudModule: {fileID: 5146867784816170477}
-  Weather: {fileID: -6458479593538681866}
-  Aurora: {fileID: 7758816196944666623}
-  Audio: {fileID: 4306403753115784765}
-  Effects: {fileID: -4962836116316160726}
-  Lightning: {fileID: 1724393643164213524}
-  Quality: {fileID: 2490124024990619507}
-  Environment: {fileID: -5163761915426777928}
-  Events: {fileID: 7156465347053547397}
+  timeModule: {fileID: 11400000, guid: 82acdd278499d74498ad37dd931734d1, type: 2}
+  lightingModule: {fileID: 11400000, guid: 81d8b109102443243bcb0894975c0718, type: 2}
+  Sky: {fileID: 11400000, guid: 44f43418b8d8b8142863e38d1e49e174, type: 2}
+  fogModule: {fileID: 11400000, guid: 6625884995235d049bd7f2f1de182577, type: 2}
+  volumetricCloudModule: {fileID: 11400000, guid: 4b3879673bba3ff488a4b539b4de69b7,
+    type: 2}
+  flatCloudModule: {fileID: 11400000, guid: 0fcdd472bd6a8ec429fc1e9bc978c4fa, type: 2}
+  Weather: {fileID: 11400000, guid: 8c4e279017d5e44458e3e4663b6ab460, type: 2}
+  Aurora: {fileID: 11400000, guid: 278933d28004c6b40ace276968b45b9e, type: 2}
+  Audio: {fileID: 11400000, guid: fac88c4f2c49e2d429d7269d163c9947, type: 2}
+  Effects: {fileID: 11400000, guid: 59a8076f06e540343b875f850ac3b6a4, type: 2}
+  Lightning: {fileID: 11400000, guid: e9a0f93373ad7014fbe96d77c75cbe4e, type: 2}
+  Quality: {fileID: 11400000, guid: 87fc95b058753524e807e3f229e77c2f, type: 2}
+  Environment: {fileID: 11400000, guid: c2a8d80258fd83a409a05aa912abca80, type: 2}
+  Events: {fileID: 11400000, guid: f264806d641cc9a4fac93b4721310370, type: 2}
 --- !u!114 &1724393643164213524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2227,9 +2228,9 @@ MonoBehaviour:
   preset: {fileID: 11400000, guid: 0fcdd472bd6a8ec429fc1e9bc978c4fa, type: 2}
   showCirrusCloudsControls: 1
   show2DCloudsControls: 0
-  cloudFlatBaseAnim: {x: -0.87437886, y: -0.7699923}
-  cloudFlatDetailAnim: {x: 0.20862114, y: 0.537757}
-  cirrusAnim: {x: 0.97037804, y: -0.69678366}
+  cloudFlatBaseAnim: {x: 0.04685842, y: 0.30886784}
+  cloudFlatDetailAnim: {x: 0.81377447, y: -0.06806689}
+  cirrusAnim: {x: -0.56901866, y: 0.8426042}
 --- !u!114 &7156465347053547397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2432,6 +2433,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   fogMat: {fileID: 0}
   volumetricsMat: {fileID: 0}
   blurMat: {fileID: 0}
@@ -2448,27 +2458,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0081d4f9e5d6e0a4d9fe8e7a8d7256b6, type: 3}
   m_Name: Time Module
   m_EditorClassIdentifier: 
-  showModuleInspector: 0
+  showModuleInspector: 1
   showSaveLoad: 0
   active: 1
   Settings:
     simulate: 0
     secSerial: 0
     minSerial: 0
-    hourSerial: 11
-    daySerial: 16
+    hourSerial: 2
+    daySerial: 1
     monthSerial: 1
     yearSerial: 2022
-    timeOfDay: 11
+    timeOfDay: 2
     latitude: 0
     longitude: 0
-    utcOffset: 1
-    cycleLengthInMinutes: 10
-    dayLengthModifier: 1
-    nightLengthModifier: 1
+    utcOffset: -1
+    cycleLengthInMinutes: 60
+    dayLengthModifier: 2.16
+    nightLengthModifier: 2.59
   preset: {fileID: 11400000, guid: 82acdd278499d74498ad37dd931734d1, type: 2}
   showTimeControls: 1
-  showLocationControls: 0
+  showLocationControls: 1
 --- !u!114 &7758816196944666623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2519,16 +2529,16 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    auroraColor: {r: 0.1, g: 0.5, b: 0.7, a: 1}
-    auroraBrightness: 75
-    auroraContrast: 10
+    auroraColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+    auroraBrightness: 71.36
+    auroraContrast: 7.29
     auroraHeight: 20000
-    auroraScale: 0.01
+    auroraScale: 0.0173
     auroraSteps: 32
     auroraLayer1Settings: {x: 0.1, y: 0.1, z: 0, w: 0.5}
     auroraLayer2Settings: {x: 5, y: 5, z: 0, w: 0.5}
     auroraColorshiftSettings: {x: 0.05, y: 0.05, z: 0, w: 5}
-    auroraSpeed: 0.005
+    auroraSpeed: 0.0035
     aurora_layer_1: {fileID: 2800000, guid: 3316634c3fa8231429eb988934de236c, type: 3}
     aurora_layer_2: {fileID: 2800000, guid: 25bf6a8e18b4471499e961d75d1777c2, type: 3}
     aurora_colorshift: {fileID: 2800000, guid: f99b7b1866c1ab3489d848a4ef3dd81b, type: 3}
