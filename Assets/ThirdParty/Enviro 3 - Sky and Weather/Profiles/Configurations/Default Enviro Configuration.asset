@@ -896,7 +896,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    temperature: 0.82957673
+    temperature: 0.8287177
     temperatureWeatherMod: 0
     temperatureCustomMod: 0
     temperatureChangingSpeed: 0.1
@@ -1553,7 +1553,7 @@ MonoBehaviour:
     defaultSkyReflectionTex: {fileID: 0}
   preset: {fileID: 11400000, guid: 81d8b109102443243bcb0894975c0718, type: 2}
   lastReflectionUpdate: 2.025
-  lastReflectionUpdatePos: {x: 0, y: 0, z: 0}
+  lastReflectionUpdatePos: {x: 7.608886, y: 2.5144448, z: -0.80571854}
   showDirectLightingControls: 1
   showAmbientLightingControls: 0
   showReflectionControls: 0
@@ -1753,10 +1753,10 @@ MonoBehaviour:
   showDensityControls: 0
   showTextureControls: 0
   showWindControls: 0
-  cloudAnimLayer1: {x: 0.7981389, y: 0.14331236, z: -0.50151455}
+  cloudAnimLayer1: {x: 0.7983156, y: 0.1431357, z: -0.5085812}
   cloudAnimLayer2: {x: 0.34090048, y: -0.6529711, z: 0.7734718}
-  cloudAnimNonScaledLayer1: {x: -1.2084203, y: 1.402137, z: -36.83122}
-  cloudAnimNonScaledLayer2: {x: -0.027791876, y: 0.17546582, z: -34.48854}
+  cloudAnimNonScaledLayer1: {x: -1.2084181, y: 1.4021349, z: -36.83166}
+  cloudAnimNonScaledLayer2: {x: -0.027794084, y: 0.17546803, z: -34.488983}
   weatherMap: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -2228,9 +2228,9 @@ MonoBehaviour:
   preset: {fileID: 11400000, guid: 0fcdd472bd6a8ec429fc1e9bc978c4fa, type: 2}
   showCirrusCloudsControls: 1
   show2DCloudsControls: 0
-  cloudFlatBaseAnim: {x: 0.04685842, y: 0.30886784}
-  cloudFlatDetailAnim: {x: 0.81377447, y: -0.06806689}
-  cirrusAnim: {x: -0.56901866, y: 0.8426042}
+  cloudFlatBaseAnim: {x: 0.04721175, y: 0.3085145}
+  cloudFlatDetailAnim: {x: 0.81554115, y: -0.069833554}
+  cirrusAnim: {x: -0.568842, y: 0.84242755}
 --- !u!114 &7156465347053547397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,6 +2346,7 @@ MonoBehaviour:
   showFogControls: 1
   showVolumetricsControls: 1
   fogLights:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -1,4 +1,4 @@
-using Lightbug.CharacterControllerPro.Core;
+﻿using Lightbug.CharacterControllerPro.Core;
 using SaveSystem;
 using SaveSystem.Serialization.Formatters.Json;
 using SmartPoint;
@@ -61,8 +61,15 @@ public class SaveLoadManager : MonoBehaviour
                 cp.SetDirection(data.direction);
             }
 
-            CharacterActor charactorActor = FindObjectOfType<CharacterActor>();
-            charactorActor.Teleport(checkPointController.GetLatestCheckpoint().GetAbsolutePosition());
+	        CharacterActor charactorActor = FindObjectOfType<CharacterActor>();
+	        CheckPoint latestCheckpoint = checkPointController.GetLatestCheckpoint();
+	        
+	        if(latestCheckpoint == null)
+	        {
+	        	return;
+	        }
+	        
+	        charactorActor.Teleport(latestCheckpoint.GetAbsolutePosition());
         }
     }
 }
